@@ -11,6 +11,7 @@ public class BusMiniGame : MonoBehaviour
     [SerializeField] float rotationIncrease;
     [SerializeField] float gravScale;
     [SerializeField] float rotationClamp;
+    
 
 
 
