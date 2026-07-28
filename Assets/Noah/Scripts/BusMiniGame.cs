@@ -14,8 +14,6 @@ public class BusMiniGame : MonoBehaviour
     
 
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +23,7 @@ public class BusMiniGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotationGrav();
+        RotationGrav(); 
         RotateAlien();
         
     }
@@ -76,6 +74,7 @@ public class BusMiniGame : MonoBehaviour
     // player lose minigame
     // remove heart from player
 
+    
     //timer 
     //Increase the timer 
     // is timer float is greater than max time 
