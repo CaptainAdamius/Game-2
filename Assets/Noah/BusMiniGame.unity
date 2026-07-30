@@ -535,26 +535,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.9029403
-      outSlope: 1.9029403
+      inSlope: 2.136902
+      outSlope: 2.136902
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.10510051
-      value: 0.2
-      inSlope: -0.11889298
-      outSlope: -0.11889298
+      time: 0.092924
+      value: 0.19856949
+      inSlope: -0.1850427
+      outSlope: -0.1850427
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.5279289
-      outWeight: 0.14115697
+      outWeight: 0.067622244
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.2234888
-      outSlope: -0.2234888
+      inSlope: -0.21891163
+      outSlope: -0.21891163
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -722,7 +722,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4596039683966122281, guid: 7147395a1ee56144aba0e451703b3c8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
