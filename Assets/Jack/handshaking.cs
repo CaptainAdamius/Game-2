@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class handshaking : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Animator anim;
+
     void Start()
     {
-        
+        anim=GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.W))
+        {
         
+            anim.SetBool("Hand_down", true);
+
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            anim.SetBool("Hand_down", false);
+
+        }
     }
+
+    
 }
+
+
