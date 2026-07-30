@@ -22,6 +22,11 @@ public class ClockMinigame : MonoBehaviour
         }
         mgState state;
 
+    // For animation
+
+    public Animator animator;
+    public AnimationClip clockAnimation;
+
     // For debugging
     [SerializeField] TextMeshProUGUI tentacleText;
     [SerializeField] TextMeshProUGUI goalText;
@@ -36,6 +41,9 @@ public class ClockMinigame : MonoBehaviour
         direction = "Left";
         state = mgState.ACTIVE;
         goalText.SetText("Goal position: " + goalPos);
+
+        float speedMultiplier = clockAnimation.length / timer;
+        animator.speed = speedMultiplier;
     }
 
     // Update is called once per frame
