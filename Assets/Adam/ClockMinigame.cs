@@ -3,51 +3,78 @@ using UnityEngine;
 
 public class ClockMinigame : MonoBehaviour
 {
+    public float mgSpeed;
+
+    public float startTime;
+    float timer;
+
+    public float startPos;
     float tentaclePos;
+
     public float tentacleSpeed;
+
     public int goalPos, goalRange;
+
     string direction;
+    enum mgState
+        {
+            ACTIVE, FINISH, RESULTS
+        }
+        mgState state;
+
+    // For animation
+
+    public Animator animator;
+    public AnimationClip clockAnimation;
+
+    // For debugging
     [SerializeField] TextMeshProUGUI tentacleText;
     [SerializeField] TextMeshProUGUI goalText;
-    string MinigameCurrentState;
-    enum minigameState
-    {
-        ACTIVE, FINISH, RESULTS
-    }
+    [SerializeField] TextMeshProUGUI timerText;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-        tentaclePos = 0;
-        direction = "Right";
-        MinigameCurrentState = minigameState.ACTIVE.ToString();
+        timer = startTime / mgSpeed;
+        tentaclePos = startPos;
+        direction = "Left";
+        state = mgState.ACTIVE;
         goalText.SetText("Goal position: " + goalPos);
+
+        float speedMultiplier = clockAnimation.length / timer;
+        animator.speed = speedMultiplier;
     }
 
     // Update is called once per frame
     void Update()
     {
+        switch (state)
+        {
+            case mgState.ACTIVE: PlayMinigame(); break;
+            case mgState.FINISH: state = mgState.RESULTS;  break;
+            default: break;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            MinigameCurrentState = minigameState.FINISH.ToString();
+            state = mgState.FINISH;
         }
-        switch (MinigameCurrentState)
+        if (timer <= 0)
         {
-            case "ACTIVE": PlayClockMinigame(); break;
-            case "FINISH": CheckFinish(); MinigameCurrentState = minigameState.RESULTS.ToString();  break;
-            default: break;
+            state = mgState.RESULTS;
         }
     }
 
-    public void PlayClockMinigame()
+    public void PlayMinigame()
     {
         switch (direction)
         {
-            case "Right": tentaclePos += tentacleSpeed; break;
-            case "Left": tentaclePos -= tentacleSpeed; break;
+            case "Right": tentaclePos += tentacleSpeed * mgSpeed; break;
+            case "Left": tentaclePos -= tentacleSpeed * mgSpeed; break;
             default: break;
         }
+        timer -= Time.deltaTime;
 
         if (tentaclePos >= 10)
         {
@@ -59,15 +86,18 @@ public class ClockMinigame : MonoBehaviour
         }
 
         tentacleText.SetText("Tentacle Pos: " + tentaclePos.ToString("F2"));
+        timerText.SetText("Time: " + timer.ToString("F2"));
     }
-    public void CheckFinish()
+    public bool PlayerWin()
     {
         if (tentaclePos >= (goalPos - goalRange / 2) && tentaclePos <= (goalPos + goalRange / 2))
         {
             Debug.Log("Success!");
+            return true;
         } else
         {
             Debug.Log("Failed.");
+            return false;
         }
     }
 }
