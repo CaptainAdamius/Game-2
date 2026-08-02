@@ -8,7 +8,7 @@ public class ClockMinigame : MonoBehaviour
     public float startTime;
     float timer;
 
-    public float startPos;
+    float startPos;
     float tentaclePos;
 
     public float tentacleSpeed;
@@ -37,6 +37,7 @@ public class ClockMinigame : MonoBehaviour
     void Start()
     {
         timer = startTime / mgSpeed;
+        startPos = Random.Range(-5f, 5f);
         tentaclePos = startPos;
         direction = "Left";
         state = mgState.ACTIVE;
@@ -55,7 +56,6 @@ public class ClockMinigame : MonoBehaviour
             case mgState.FINISH: state = mgState.RESULTS;  break;
             default: break;
         }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             state = mgState.FINISH;
@@ -70,17 +70,17 @@ public class ClockMinigame : MonoBehaviour
     {
         switch (direction)
         {
-            case "Right": tentaclePos += tentacleSpeed * mgSpeed; break;
-            case "Left": tentaclePos -= tentacleSpeed * mgSpeed; break;
+            case "Right": tentaclePos += tentacleSpeed * mgSpeed * Time.deltaTime; break;
+            case "Left": tentaclePos -= tentacleSpeed * mgSpeed * Time.deltaTime; break;
             default: break;
         }
         timer -= Time.deltaTime;
 
-        if (tentaclePos >= 10)
+        if (tentaclePos >= 5)
         {
             direction = "Left";
         }
-        else if (tentaclePos <= 0)
+        else if (tentaclePos <= -5)
         {
             direction = "Right";
         }

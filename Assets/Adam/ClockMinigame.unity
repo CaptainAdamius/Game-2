@@ -506,9 +506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClockMinigame
   mgSpeed: 1
   startTime: 5
-  startPos: 3
-  tentacleSpeed: 0.075
-  goalPos: 5
+  tentacleSpeed: 2
+  goalPos: 0
   goalRange: 2
   animator: {fileID: 668338558}
   clockAnimation: {fileID: 7400000, guid: 97d606549f4e6db4ea133da0554f6555, type: 2}
