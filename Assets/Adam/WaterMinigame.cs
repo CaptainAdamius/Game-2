@@ -84,7 +84,7 @@ public class WaterMinigame : MonoBehaviour
         }
         
 
-        cupPos += cupSpeed * mgSpeed;
+        cupPos += cupSpeed * mgSpeed; if (cupPos < -5 || cupPos > 5) {cupSpeed = 0;} cupPos = Mathf.Clamp(cupPos, -5, 5);
 
         timer -= Time.deltaTime;
 

@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a453baf990f5c454fa4757b22edc5200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterMinigame
-  mgSpeed: 5
+  mgSpeed: 1
   startTime: 15
   coolerRange: 2
   animator: {fileID: 93487848}
