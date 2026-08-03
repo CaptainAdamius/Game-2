@@ -18,11 +18,18 @@ public class BusMiniGame2 : MonoBehaviour
     private Coroutine knockEvent;
     [SerializeField] float betweenTime;
 
-
     [SerializeField] ScreenShake screenShake;
+
+
+
+    [SerializeField] GameObject aKeyVisual;
+    [SerializeField] GameObject dKeyVisual;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        aKeyVisual.SetActive(false);
+        dKeyVisual.SetActive(false);
+
         knockEvent = StartCoroutine(KnockEvent());
     }
     private void Update()
@@ -42,25 +49,30 @@ public class BusMiniGame2 : MonoBehaviour
         {
             RotateAlienLeft();
             RotationGrav();
+            aKeyVisual.SetActive(true);
+
             yield return null;
         }
 
+        aKeyVisual.SetActive(false);
         rotation = 0;
        
-
         yield return new WaitForSeconds(betweenTime);
 
         rotation = 90f;
-
         screenShake.StartScreenShake();
+
         while (rotation > 0)
         {
             
             RotateAlienRight();
             RotationGrav();
+            dKeyVisual.SetActive(true);
+
             yield return null;
         }
 
+        dKeyVisual.SetActive(false);
         rotation = 0;
         
 
@@ -99,6 +111,8 @@ public class BusMiniGame2 : MonoBehaviour
         }
     }
 
+    
+    
     //Knock event 
     //corutine timeinbetween knock
     // bool DoneTask
@@ -124,6 +138,9 @@ public class BusMiniGame2 : MonoBehaviour
     //end corutine
 
     //When timer is done, if doneTask equals true player wins else player loses
+
+
+
 
 
 }

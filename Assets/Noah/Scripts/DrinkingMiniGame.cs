@@ -14,10 +14,12 @@ public class DrinkingMiniGame : MonoBehaviour
     float currentRotation;
 
 
+    [SerializeField] GameObject wKeyVisual;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         drinkRotation = transform; // set drinkRotation to the pivot gameObject (the game object with this script attached)
+        wKeyVisual.SetActive(true);
     }
 
     // Update is called once per frame
@@ -63,10 +65,12 @@ public class DrinkingMiniGame : MonoBehaviour
         if(currentRotation > drinkMax/2) // check if the drink has be rotated half way based of max drink
         {
             middle = true;// the player is halfway
+            wKeyVisual.SetActive(false);
         }
         else
         {
             middle= false;// the player isnot halfway
+            ;
         }
     }
 
