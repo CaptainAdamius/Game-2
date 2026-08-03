@@ -20,6 +20,8 @@ public class DrinkingMiniGame : MonoBehaviour
     {
         drinkRotation = transform; // set drinkRotation to the pivot gameObject (the game object with this script attached)
         wKeyVisual.SetActive(true);
+
+        
     }
 
     // Update is called once per frame

@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.FilePathAttribute;
 
 public class BusMiniGame2 : MonoBehaviour
@@ -27,6 +28,8 @@ public class BusMiniGame2 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
+
         aKeyVisual.SetActive(false);
         dKeyVisual.SetActive(false);
 
@@ -74,6 +77,7 @@ public class BusMiniGame2 : MonoBehaviour
 
         dKeyVisual.SetActive(false);
         rotation = 0;
+
         
 
         StopCoroutine(KnockEvent());

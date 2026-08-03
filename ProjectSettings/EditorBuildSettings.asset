@@ -15,11 +15,17 @@ EditorBuildSettings:
     path: Assets/Jack/Tranitions.unity
     guid: 86401f8fc0b14104b9c596b3dc11474b
   - enabled: 1
+    path: Assets/Noah/BusMiniGame.unity
+    guid: e98d860a7205ee742a4c0a9818f505da
+  - enabled: 1
     path: Assets/Jack/Emailing.unity
     guid: 312366b8af972f6488003614afba5f76
   - enabled: 1
     path: Assets/Jack/Handshake.unity
     guid: 34f58bdf165c3c34680140a3bc7f1eae
+  - enabled: 1
+    path: Assets/Noah/AfterWorkDrinkMiniGame.unity
+    guid: 1fcec41d35aad06468556472dc2f1c57
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
