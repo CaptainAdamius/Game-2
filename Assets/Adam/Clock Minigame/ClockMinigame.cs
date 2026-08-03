@@ -9,7 +9,7 @@ public class ClockMinigame : MonoBehaviour
     float timer;
 
     float startPos;
-    float tentaclePos;
+    public float tentaclePos;
 
     public float tentacleSpeed;
 

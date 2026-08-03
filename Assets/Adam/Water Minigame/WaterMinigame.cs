@@ -10,12 +10,12 @@ public class WaterMinigame : MonoBehaviour
     float timer;
 
     float startPos;
-    float cupPos;
+    public float cupPos;
     float cupSpeed;
     float cupFill;
 
     int coolerPos = 0;
-    public int coolerRange;
+    public float coolerRange;
 
     string direction;
     enum mgState
@@ -73,10 +73,10 @@ public class WaterMinigame : MonoBehaviour
     public void PlayMinigame()
     {
         if (Input.GetKey(KeyCode.A)) {
-            cupSpeed -= 0.000002f;
+            cupSpeed -= 0.000005f;
         }
         if (Input.GetKey(KeyCode.D)) {
-            cupSpeed += 0.000002f;
+            cupSpeed += 0.000005f;
         }
         if (Input.GetKey(KeyCode.Space) && cupPos >= (coolerPos - coolerRange / 2) && cupPos <= (coolerPos + coolerRange / 2))
         {
