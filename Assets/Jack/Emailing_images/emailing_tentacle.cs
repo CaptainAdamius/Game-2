@@ -78,6 +78,6 @@ public class WonkyHandController : MonoBehaviour
 
     private void HitButton()
     {
-        SceneManager.LoadScene("Handshake");
+        GameData.GDTaskComplete = true;
     }
 }
