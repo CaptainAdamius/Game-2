@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 90452120}
   - component: {fileID: 90452119}
   m_Layer: 0
-  m_Name: key_w_0
+  m_Name: keyW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7058628618646490282, guid: 60f64785316c4424e83c398e53c3148b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 1194144787}
   - component: {fileID: 1194144786}
   m_Layer: 0
-  m_Name: key_d_0
+  m_Name: keyA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,7 +948,7 @@ Animator:
   m_GameObject: {fileID: 1194144785}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cdddd712fcf23db448a4f9d172810059, type: 2}
+  m_Controller: {fileID: 9100000, guid: bdec44ced702de7428bf8743acc4e57a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1009,7 +1009,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -211790212334152352, guid: 0bc5daa2ad5909d4abd03bca6198060a, type: 3}
+  m_Sprite: {fileID: 2426205020412763150, guid: 4b0d6681c1f64014fb42b14c7905c3a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

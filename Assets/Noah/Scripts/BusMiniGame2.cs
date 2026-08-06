@@ -78,8 +78,9 @@ public class BusMiniGame2 : MonoBehaviour
         dKeyVisual.SetActive(false);
         rotation = 0;
 
-        
 
+        GameData.GDMiniGameNumber++;
+        SceneManager.LoadScene("Tranitions");
         StopCoroutine(KnockEvent());
     }
     

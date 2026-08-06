@@ -32,5 +32,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void endScene()
     {
         SceneManager.LoadScene("menu");
+        GameData.GDMiniGameNumber = 0;
     }
 }
