@@ -44,9 +44,6 @@ public class BusMiniGame2 : MonoBehaviour
     private void Update()
     {
 
-
-
-
         AwkwardnessText();
 
         rotationPivot.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotation);
@@ -54,7 +51,14 @@ public class BusMiniGame2 : MonoBehaviour
 
 
     IEnumerator KnockEvent()
-    { 
+    {
+
+        while (SceneIntroManager.IsIntroActive)
+        {
+            yield return null;
+        }
+       
+
         yield return new WaitForSeconds(betweenTime);
 
         rotation = -90f;
