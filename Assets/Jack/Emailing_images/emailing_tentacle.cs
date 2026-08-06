@@ -2,7 +2,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class WonkyHandController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -14,7 +13,6 @@ public class WonkyHandController : MonoBehaviour
     public float driftSpeed = 3f;
 
     private Rigidbody2D rb;
-
     private bool tentacleTouching = false;
 
     void Start()
@@ -24,8 +22,11 @@ public class WonkyHandController : MonoBehaviour
 
     void Update()
     {
+        // NEW GLOBAL CHECK: Stop everything if the countdown is running
+        if (SceneIntroManager.IsIntroActive) return;
+
         // Only allow movement input if we aren't currently slamming down
-        if (Input.GetKeyDown(KeyCode.Space)&& tentacleTouching)
+        if (Input.GetKeyDown(KeyCode.Space) && tentacleTouching)
         {
             HitButton();
         }
@@ -33,6 +34,8 @@ public class WonkyHandController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // NEW GLOBAL CHECK: Stop physics/drift if the countdown is running
+        if (SceneIntroManager.IsIntroActive) return;
 
         // 1. Get WASD Input
         float moveX = Input.GetAxisRaw("Horizontal"); // A, D
@@ -54,7 +57,7 @@ public class WonkyHandController : MonoBehaviour
             rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
         }
     }
-   
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("button"))
@@ -63,6 +66,7 @@ public class WonkyHandController : MonoBehaviour
             tentacleTouching = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("button"))
@@ -71,9 +75,9 @@ public class WonkyHandController : MonoBehaviour
             Debug.Log("Not touching");
         }
     }
+
     private void HitButton()
     {
         SceneManager.LoadScene("Handshake");
     }
 }
-
