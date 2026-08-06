@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,11 +26,16 @@ public class BusMiniGame2 : MonoBehaviour
 
     [SerializeField] GameObject aKeyVisual;
     [SerializeField] GameObject dKeyVisual;
+
+
+
+    [SerializeField] TextMeshProUGUI awkwardnessText;
+    private int awkwardnessCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
-
+        awkwardnessCount = 0;
         aKeyVisual.SetActive(false);
         dKeyVisual.SetActive(false);
 
@@ -37,6 +43,12 @@ public class BusMiniGame2 : MonoBehaviour
     }
     private void Update()
     {
+
+
+
+
+        AwkwardnessText();
+
         rotationPivot.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, rotation);
     }
 
@@ -78,7 +90,8 @@ public class BusMiniGame2 : MonoBehaviour
         dKeyVisual.SetActive(false);
         rotation = 0;
 
-        
+
+        GameData.GDTaskComplete = true;
 
         StopCoroutine(KnockEvent());
     }
@@ -103,6 +116,8 @@ public class BusMiniGame2 : MonoBehaviour
         {
             rotation += rotationIncrease;
             rotation = Mathf.Clamp(rotation, -rotationClamp, rotationClamp);
+
+            awkwardnessCount++;
         }
     }
 
@@ -112,7 +127,14 @@ public class BusMiniGame2 : MonoBehaviour
         {
             rotation -= rotationIncrease;
             rotation = Mathf.Clamp(rotation, -rotationClamp, rotationClamp);
+
+            awkwardnessCount++;
         }
+    }
+
+    private void AwkwardnessText()
+    {
+        awkwardnessText.text = ("Awkwardness :" + awkwardnessCount);
     }
 
     

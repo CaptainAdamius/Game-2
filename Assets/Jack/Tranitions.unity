@@ -471,6 +471,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &870540823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870540824}
+  m_Layer: 0
+  m_Name: Screens
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &870540824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870540823}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.41271, y: 0.80636, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1051339202}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051339199
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,8 +514,9 @@ GameObject:
   - component: {fileID: 1051339202}
   - component: {fileID: 1051339201}
   - component: {fileID: 1051339200}
+  - component: {fileID: 1051339203}
   m_Layer: 0
-  m_Name: morning_0
+  m_Name: ScreensSlection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,13 +611,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051339199}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1752884, y: 0.1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.57, y: -1.22, z: 0}
   m_LocalScale: {x: 4.2969, y: 4.2969, z: 4.2969}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 870540824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1051339203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051339199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b846604dff0dd14db5376d2b0584a0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Transitions
+  transitionScreens:
+  - {fileID: -7174398410651123135, guid: 633262899b80ca94b88858560874618a, type: 3}
+  - {fileID: 6546687106442909158, guid: b8c1bb13a032e894fa7d067396c05de6, type: 3}
+  - {fileID: 4499291042377828236, guid: 9df5d2a9db5857e43a58503361c340fe, type: 3}
+  - {fileID: 2685480421303288509, guid: 05c98b5586181314da9cb141334103b5, type: 3}
+  - {fileID: -3332572935105992748, guid: 534129e2745e6c14a811c3c397e67ee2, type: 3}
+  - {fileID: 4932807989116698723, guid: b1ca0147b83f1044a9d9f85b32b196d9, type: 3}
+  scenes:
+  - BusMiniGame
+  - AfterWorkDrinkMiniGame
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1 &1059629847
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,4 +732,4 @@ SceneRoots:
   - {fileID: 539518459}
   - {fileID: 221517275}
   - {fileID: 1059629850}
-  - {fileID: 1051339202}
+  - {fileID: 870540824}
