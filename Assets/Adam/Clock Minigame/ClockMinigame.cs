@@ -10,11 +10,11 @@ public class ClockMinigame : MonoBehaviour
 
     float startPos;
     public float tentaclePos;
-
+    public float tentacleRange;
     public float tentacleSpeed;
+    public float goalPos, goalRange;
 
-    public int goalPos, goalRange;
-
+    bool hasPlayerWon;
     string direction;
     enum mgState
         {
@@ -36,8 +36,9 @@ public class ClockMinigame : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        hasPlayerWon = false;
         timer = startTime / mgSpeed;
-        startPos = Random.Range(-5f, 5f);
+        startPos = Random.Range(-tentacleRange, tentacleRange);
         tentaclePos = startPos;
         direction = "Left";
         state = mgState.ACTIVE;
@@ -53,7 +54,7 @@ public class ClockMinigame : MonoBehaviour
         switch (state)
         {
             case mgState.ACTIVE: PlayMinigame(); break;
-            case mgState.FINISH: state = mgState.RESULTS;  break;
+            case mgState.FINISH: PlayerWin(); state = mgState.RESULTS;  break;
             default: break;
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -76,11 +77,11 @@ public class ClockMinigame : MonoBehaviour
         }
         timer -= Time.deltaTime;
 
-        if (tentaclePos >= 5)
+        if (tentaclePos >= tentacleRange)
         {
             direction = "Left";
         }
-        else if (tentaclePos <= -5)
+        else if (tentaclePos <= -tentacleRange)
         {
             direction = "Right";
         }
@@ -88,16 +89,16 @@ public class ClockMinigame : MonoBehaviour
         tentacleText.SetText("Tentacle Pos: " + tentaclePos.ToString("F2"));
         timerText.SetText("Time: " + timer.ToString("F2"));
     }
-    public bool PlayerWin()
+    public void PlayerWin()
     {
         if (tentaclePos >= (goalPos - goalRange / 2) && tentaclePos <= (goalPos + goalRange / 2))
         {
             Debug.Log("Success!");
-            return true;
+            hasPlayerWon = true;
         } else
         {
             Debug.Log("Failed.");
-            return false;
+            hasPlayerWon = false;
         }
     }
 }
