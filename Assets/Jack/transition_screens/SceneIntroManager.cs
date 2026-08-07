@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SceneIntroManager : MonoBehaviour
 {
@@ -16,6 +18,12 @@ public class SceneIntroManager : MonoBehaviour
 
     public static bool IsIntroActive { get; private set; } = true;
 
+
+
+    public Coroutine finshGame;
+    [SerializeField] GameObject stampVisual;
+    [SerializeField] Animator stampAnim;
+
     void Awake()
     {
         IsIntroActive = true;
@@ -26,11 +34,14 @@ public class SceneIntroManager : MonoBehaviour
         if (introScreenUI != null) introScreenUI.SetActive(true);
         if (backgroundPanel != null) backgroundPanel.SetActive(true);
 
+        stampVisual.SetActive(false);
+
         // Timer 1: Unlocks movement and hides the dark background panel at 3 seconds
         Invoke(nameof(UnlockGameplay), movementUnlockTime);
 
         // Timer 2: Fully shuts off the remaining "GO!" text overlay at 4 seconds
         Invoke(nameof(FinishCountdown), totalIntroDuration);
+        
     }
 
     private void UnlockGameplay()
@@ -54,5 +65,28 @@ public class SceneIntroManager : MonoBehaviour
 
         onCountdownFinished?.Invoke();
     }
+
+
+    public void startWinGame()
+    {
+        finshGame = StartCoroutine(FinshGame());
+    }
+
+
+     IEnumerator FinshGame()
+    {
+        
+        IsIntroActive = true;
+        if (backgroundPanel != null) backgroundPanel.SetActive(true);
+        stampVisual.SetActive(true);
+        stampAnim.Play("stamp");
+
+        yield return new WaitForSeconds(1.2f);
+
+        GameData.GDMiniGameNumber++;
+        SceneManager.LoadScene("Tranitions");
+    }
+
+    
 }
 

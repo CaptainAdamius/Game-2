@@ -34,7 +34,7 @@ public class Transitions : MonoBehaviour
         screenIndex = GameData.GDMiniGameNumber;
         spriteRenderer.sprite = transitionScreens[screenIndex];
         
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         
         sceneIndex = GameData.GDMiniGameNumber;
         SceneManager.LoadScene(scenes[sceneIndex]);

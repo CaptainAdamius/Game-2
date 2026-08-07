@@ -34,7 +34,6 @@ public class BusMiniGame2 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         awkwardnessCount = 0;
         aKeyVisual.SetActive(false);
         dKeyVisual.SetActive(false);

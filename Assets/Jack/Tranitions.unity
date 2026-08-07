@@ -638,13 +638,12 @@ MonoBehaviour:
   - {fileID: -3332572935105992748, guid: 534129e2745e6c14a811c3c397e67ee2, type: 3}
   - {fileID: 4932807989116698723, guid: b1ca0147b83f1044a9d9f85b32b196d9, type: 3}
   scenes:
+  - ClockMinigame
   - BusMiniGame
+  - WaterMinigame
+  - Emailing
+  - Handshake
   - AfterWorkDrinkMiniGame
-  - 
-  - 
-  - 
-  - 
-  - 
 --- !u!1 &1059629847
 GameObject:
   m_ObjectHideFlags: 0

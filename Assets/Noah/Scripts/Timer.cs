@@ -10,9 +10,9 @@ public class Timer : MonoBehaviour
     [SerializeField] AnimationClip timerAnimtion;
     [SerializeField] float time;
 
-    float timer;
+    [SerializeField] SceneIntroManager sceneIntroManager;
 
-    
+    float timer;
 
     public enum timerSelection {TimeISWin, TimeIsLose}
     public timerSelection timerType;
@@ -29,6 +29,11 @@ public class Timer : MonoBehaviour
         if (SceneIntroManager.IsIntroActive) return;
         
         animator.Play("Cycle");
+
+        
+        
+        
+
 
 
         UpdateTimer();
@@ -70,9 +75,10 @@ public class Timer : MonoBehaviour
 
         
         if (GameData.GDTaskComplete)
-        { 
-            GameData.GDMiniGameNumber++;
-            SceneManager.LoadScene("Tranitions");
+        {
+            //GameData.GDMiniGameNumber++;
+            //SceneManager.LoadScene("Tranitions");
+            sceneIntroManager.startWinGame();
         }
         else if (timer >= time)
         {
@@ -87,8 +93,8 @@ public class Timer : MonoBehaviour
         animator.speed = animationSpeed;
     }
 
-
-    // if (SceneIntroManager.IsIntroActive) return
-    // GameData.GDTaskComplete = true;
-
+    //if (SceneIntroManager.IsIntroActive) return;
+    //GameData.GDTaskComplete = true;
+     //GameData.GDMiniGameNumber++;
+    
 }

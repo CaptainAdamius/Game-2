@@ -27,7 +27,9 @@ public class DrinkingMiniGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (SceneIntroManager.IsIntroActive) return;
+
+
         HalfWay();
 
         if (Input.GetKeyDown(KeyCode.W) && !middle && drinkNumber < drinkMax) //when W is pressed and not at middle and less than the drink max
@@ -50,7 +52,7 @@ public class DrinkingMiniGame : MonoBehaviour
         if (drinkNumber >= drinkMax) // if the DrinkNumber is equal or greater than the drinGoal
         {
             //move to next scene - this will connect with the universal game manager script
-            Debug.Log("win"); 
+            GameData.GDTaskComplete = true;
         }
         
     }
@@ -72,7 +74,7 @@ public class DrinkingMiniGame : MonoBehaviour
         else
         {
             middle= false;// the player isnot halfway
-            ;
+            
         }
     }
 
