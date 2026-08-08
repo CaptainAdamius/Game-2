@@ -14,11 +14,6 @@ public class ClockMinigame : MonoBehaviour
     bool tentacleMoving;
     bool hasPlayerWon;
     string direction;
-    enum mgState
-        {
-            ACTIVE, FINISH, RESULTS
-        }
-        mgState state;
 
     // For debugging
     [SerializeField] TextMeshProUGUI tentacleText;
@@ -33,7 +28,6 @@ public class ClockMinigame : MonoBehaviour
         if (startPos > -3) { startPos += 6; }
         tentaclePos = startPos;
         direction = "Left";
-        state = mgState.ACTIVE;
         goalText.SetText("Goal position: " + goalPos);
     }
 
@@ -106,7 +100,6 @@ public class ClockMinigame : MonoBehaviour
             {
                 Debug.Log("Success!");
                 GameData.GDTaskComplete = true;
-                GameData.GDMiniGameNumber++;
                 hasPlayerWon = true;
             }
             else

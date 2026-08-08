@@ -14,11 +14,6 @@ public class WaterMinigame : MonoBehaviour
     int coolerPos = 0;
     public float coolerRange;
     public GameObject water;
-    enum mgState
-    {
-        ACTIVE, FINISH, RESULTS
-    }
-    mgState state;
 
     // For debugging
     [SerializeField] TextMeshProUGUI fillText;
@@ -31,7 +26,6 @@ public class WaterMinigame : MonoBehaviour
         startPos = Random.Range(-5f, -1f);
         if (startPos > -3) {startPos += 6;}
         cupPos = startPos;
-        state = mgState.ACTIVE;
         cupFill = 0;
     }
 
@@ -39,13 +33,7 @@ public class WaterMinigame : MonoBehaviour
     void Update()
     {
         if (SceneIntroManager.IsIntroActive) return;
-
-        switch (state)
-        {
-            case mgState.ACTIVE: PlayMinigame(); break;
-            case mgState.FINISH: state = mgState.RESULTS; break;
-            default: break;
-        }
+        PlayMinigame();
 
         if (cupFill >= 1)
         {
@@ -78,7 +66,6 @@ public class WaterMinigame : MonoBehaviour
         if (!hasPlayerWon)
         {
             GameData.GDTaskComplete = true;
-            GameData.GDMiniGameNumber++;
             hasPlayerWon = true;
         }
     }
