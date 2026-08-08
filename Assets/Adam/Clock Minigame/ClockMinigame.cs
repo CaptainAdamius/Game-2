@@ -29,8 +29,8 @@ public class ClockMinigame : MonoBehaviour
     {
         tentacleMoving = true;
         tentacleHeight = 1.5f;
-        hasPlayerWon = false;
-        startPos = Random.Range(-tentacleRange, tentacleRange);
+        startPos = Random.Range(-5f, -1f);
+        if (startPos > -3) { startPos += 6; }
         tentaclePos = startPos;
         direction = "Left";
         state = mgState.ACTIVE;
@@ -41,15 +41,7 @@ public class ClockMinigame : MonoBehaviour
     void Update()
     {
         if (SceneIntroManager.IsIntroActive) return;
-        
-
-        switch (state)
-        {
-            case mgState.ACTIVE: PlayMinigame(); break;
-            case mgState.FINISH: PlayerWin(); state = mgState.RESULTS;  break;
-            default: break;
-        }
-        
+        PlayMinigame();
     }
 
     public void PlayMinigame()
@@ -58,12 +50,13 @@ public class ClockMinigame : MonoBehaviour
 
         if (tentacleMoving)
         {
-            if (tentacleHeight <= 1.5)
+            if (tentacleHeight < 1.5)
             {
                 tentacleHeight += 8f * Time.deltaTime;
             }
             else
             {
+                tentacleHeight = 1.5f;
                 switch (direction)
                 {
                     case "Right": tentaclePos += tentacleSpeed * mgSpeed * Time.deltaTime; break;
@@ -88,30 +81,39 @@ public class ClockMinigame : MonoBehaviour
             {
                 tentacleHeight -= 8f * Time.deltaTime;
             }
-            else if (tentacleHeight <= -1.2)
+            else
             {
                 PlayerWin();
                 tentacleMoving = true;
             }
         }
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            tentacleMoving = false;
+            if (tentacleHeight >= 1.5f)
+            {
+                tentacleMoving = false;
+            }
         }
 
     }
     public void PlayerWin()
     {
-        if (tentaclePos >= (goalPos - goalRange / 2) && tentaclePos <= (goalPos + goalRange / 2))
+        if (!hasPlayerWon)
         {
-            Debug.Log("Success!");
-            hasPlayerWon = true;
-            GameData.GDTaskComplete = true;
-            GameData.GDMiniGameNumber++;
-        } else
-        {
-            Debug.Log("Failed.");
-            hasPlayerWon = false;
+            if (tentaclePos >= (goalPos - goalRange / 2) && tentaclePos <= (goalPos + goalRange / 2))
+            {
+                Debug.Log("Success!");
+                GameData.GDTaskComplete = true;
+                GameData.GDMiniGameNumber++;
+                hasPlayerWon = true;
+            }
+            else
+            {
+                Debug.Log("Failed.");
+            }
         }
+        
     }
 }

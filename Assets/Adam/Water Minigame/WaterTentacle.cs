@@ -14,6 +14,6 @@ public class WaterTentacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(manager.cupPos, -1.5f);
+        transform.position = new Vector3(manager.cupPos, -1.765f);
     }
 }
