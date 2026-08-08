@@ -15,8 +15,14 @@ EditorBuildSettings:
     path: Assets/Jack/Tranitions.unity
     guid: 86401f8fc0b14104b9c596b3dc11474b
   - enabled: 1
+    path: Assets/Adam/Clock Minigame/ClockMinigame.unity
+    guid: b745c560a3ad6b74796e0bde274e2aa1
+  - enabled: 1
     path: Assets/Noah/BusMiniGame.unity
     guid: e98d860a7205ee742a4c0a9818f505da
+  - enabled: 1
+    path: Assets/Adam/Water Minigame/WaterMinigame.unity
+    guid: a09ebae23180ea8459493be34fe3ed2c
   - enabled: 1
     path: Assets/Jack/Emailing.unity
     guid: 312366b8af972f6488003614afba5f76

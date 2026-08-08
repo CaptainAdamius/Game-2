@@ -5,15 +5,13 @@ public class ClockMinigame : MonoBehaviour
 {
     public float mgSpeed;
 
-    public float startTime;
-    float timer;
-
     float startPos;
     public float tentaclePos;
+    public float tentacleHeight;
     public float tentacleRange;
     public float tentacleSpeed;
     public float goalPos, goalRange;
-
+    bool tentacleMoving;
     bool hasPlayerWon;
     string direction;
     enum mgState
@@ -22,72 +20,85 @@ public class ClockMinigame : MonoBehaviour
         }
         mgState state;
 
-    // For animation
-
-    public Animator animator;
-    public AnimationClip clockAnimation;
-
     // For debugging
     [SerializeField] TextMeshProUGUI tentacleText;
     [SerializeField] TextMeshProUGUI goalText;
-    [SerializeField] TextMeshProUGUI timerText;
-    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        tentacleMoving = true;
+        tentacleHeight = 1.5f;
         hasPlayerWon = false;
-        timer = startTime / mgSpeed;
         startPos = Random.Range(-tentacleRange, tentacleRange);
         tentaclePos = startPos;
         direction = "Left";
         state = mgState.ACTIVE;
         goalText.SetText("Goal position: " + goalPos);
-
-        float speedMultiplier = clockAnimation.length / timer;
-        animator.speed = speedMultiplier;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (SceneIntroManager.IsIntroActive) return;
+        
+
         switch (state)
         {
             case mgState.ACTIVE: PlayMinigame(); break;
             case mgState.FINISH: PlayerWin(); state = mgState.RESULTS;  break;
             default: break;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            state = mgState.FINISH;
-        }
-        if (timer <= 0)
-        {
-            state = mgState.RESULTS;
-        }
+        
     }
 
     public void PlayMinigame()
     {
-        switch (direction)
-        {
-            case "Right": tentaclePos += tentacleSpeed * mgSpeed * Time.deltaTime; break;
-            case "Left": tentaclePos -= tentacleSpeed * mgSpeed * Time.deltaTime; break;
-            default: break;
-        }
-        timer -= Time.deltaTime;
 
-        if (tentaclePos >= tentacleRange)
+
+        if (tentacleMoving)
         {
-            direction = "Left";
+            if (tentacleHeight <= 1.5)
+            {
+                tentacleHeight += 8f * Time.deltaTime;
+            }
+            else
+            {
+                switch (direction)
+                {
+                    case "Right": tentaclePos += tentacleSpeed * mgSpeed * Time.deltaTime; break;
+                    case "Left": tentaclePos -= tentacleSpeed * mgSpeed * Time.deltaTime; break;
+                    default: break;
+                }
+                if (tentaclePos >= tentacleRange)
+                {
+                    direction = "Left";
+                }
+                else if (tentaclePos <= -tentacleRange)
+                {
+                    direction = "Right";
+                }
+            }
+
+            tentacleText.SetText("Tentacle Pos: " + tentaclePos.ToString("F2"));
+
+        } else if (!tentacleMoving)
+        {
+            if (tentacleHeight >= -1.2)
+            {
+                tentacleHeight -= 8f * Time.deltaTime;
+            }
+            else if (tentacleHeight <= -1.2)
+            {
+                PlayerWin();
+                tentacleMoving = true;
+            }
         }
-        else if (tentaclePos <= -tentacleRange)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            direction = "Right";
+            tentacleMoving = false;
         }
 
-        tentacleText.SetText("Tentacle Pos: " + tentaclePos.ToString("F2"));
-        timerText.SetText("Time: " + timer.ToString("F2"));
     }
     public void PlayerWin()
     {
@@ -95,6 +106,8 @@ public class ClockMinigame : MonoBehaviour
         {
             Debug.Log("Success!");
             hasPlayerWon = true;
+            GameData.GDTaskComplete = true;
+            GameData.GDMiniGameNumber++;
         } else
         {
             Debug.Log("Failed.");

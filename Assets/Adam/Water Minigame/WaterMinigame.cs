@@ -73,14 +73,14 @@ public class WaterMinigame : MonoBehaviour
     public void PlayMinigame()
     {
         if (Input.GetKey(KeyCode.A)) {
-            cupSpeed -= 0.000005f;
+            cupSpeed -= 0.05f * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D)) {
-            cupSpeed += 0.000005f;
+            cupSpeed += 0.05f * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.Space) && cupPos >= (coolerPos - coolerRange / 2) && cupPos <= (coolerPos + coolerRange / 2))
         {
-            cupFill += 0.0003f * mgSpeed;
+            cupFill += 0.3f * mgSpeed * Time.deltaTime;
         }
         
 
