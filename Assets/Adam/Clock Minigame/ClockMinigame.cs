@@ -24,7 +24,7 @@ public class ClockMinigame : MonoBehaviour
     {
         tentacleMoving = true;
         tentacleHeight = 1.5f;
-        startPos = Random.Range(-5f, -1f);
+        startPos = Random.Range(-4f, -2f);
         if (startPos > -3) { startPos += 6; }
         tentaclePos = startPos;
         direction = "Left";
