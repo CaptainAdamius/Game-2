@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.UI;
-using static UnityEditor.FilePathAttribute;
+
 
 public class DrinkingMiniGame : MonoBehaviour
 {
