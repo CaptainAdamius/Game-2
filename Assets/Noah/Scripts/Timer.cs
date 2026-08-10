@@ -26,15 +26,18 @@ public class Timer : MonoBehaviour
     private void Update()
     {
 
+       
+
+
         if (SceneIntroManager.IsIntroActive) return;
         
+       
+
+
+
         animator.Play("Cycle");
 
         
-        
-        
-
-
 
         UpdateTimer();
 
@@ -59,8 +62,9 @@ public class Timer : MonoBehaviour
         {
             if (GameData.GDTaskComplete)
             {
-                GameData.GDMiniGameNumber++;
-                SceneManager.LoadScene("Tranitions");
+                //GameData.GDMiniGameNumber++;
+                //SceneManager.LoadScene("Tranitions");
+                sceneIntroManager.startWinGame();
             }
             else
             {

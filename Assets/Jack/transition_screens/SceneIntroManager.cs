@@ -82,9 +82,18 @@ public class SceneIntroManager : MonoBehaviour
         stampAnim.Play("stamp");
 
         yield return new WaitForSeconds(1.2f);
-
-        GameData.GDMiniGameNumber++;
-        SceneManager.LoadScene("Tranitions");
+        
+        if (GameData.GDMiniGameNumber > 4)
+        {
+            SceneManager.LoadScene("win");
+       
+        }
+        else
+        {
+            GameData.GDMiniGameNumber++;
+            SceneManager.LoadScene("Tranitions");
+        }
+       
     }
 
     
